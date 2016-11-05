@@ -1,0 +1,201 @@
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>a_pbbias.csv (editing)</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://joinquant-static2.b0.upaiyun.com/base/images/favicon.ico?v=30780f272ab4aac64aa073a841546240">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="https://joinquant-static2.b0.upaiyun.com/components/jquery-ui/themes/smoothness/jquery-ui.min.css?v=9b2c8d3489227115310662a343fce11c" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+<link rel="stylesheet" href="https://joinquant-static2.b0.upaiyun.com/components/codemirror/lib/codemirror.css?v=549e7432c1e8e94d1a2e66d7be92a430">
+<link rel="stylesheet" href="https://joinquant-static2.b0.upaiyun.com/components/codemirror/addon/dialog/dialog.css?v=c89dce10b44d2882a024e7befc2b63f5">
+
+    <link rel="stylesheet" href="https://joinquant-static2.b0.upaiyun.com/style/style.min.css?v=44b45f9fad89521ec9e79c7ae96e69c2" type="text/css"/>
+    
+
+    <link rel="stylesheet" href="/user/22207714437/custom/custom.css" type="text/css" />
+    <script src="https://joinquant-static2.b0.upaiyun.com/components/es6-promise/promise.min.js?v=f004a16cb856e0ff11781d01ec5ca8fe" type="text/javascript" charset="utf-8"></script>
+    <script src="https://joinquant-static2.b0.upaiyun.com/components/requirejs/require.js?v=2de44fdcc1fe5e939aa4ce80626b241d" type="text/javascript" charset="utf-8"></script>
+    <script>
+      require.config({
+          
+          urlArgs: "v=20160726005453",
+          
+          baseUrl: 'https://joinquant-static2.b0.upaiyun.com/',
+          paths: {
+            'auth/js/main': 'auth/js/main.min',
+            custom : '/user/22207714437/custom',
+            nbextensions : '',
+            widgets : '/user/22207714437/deprecatedwidgets',
+            kernelspecs : '/user/22207714437/kernelspecs',
+            underscore : 'components/underscore/underscore-min',
+            backbone : 'components/backbone/backbone-min',
+            jquery: 'components/jquery/jquery.min',
+            bootstrap: 'components/bootstrap/js/bootstrap.min',
+            bootstraptour: 'components/bootstrap-tour/build/js/bootstrap-tour.min',
+            jqueryui: 'components/jquery-ui/ui/minified/jquery-ui.min',
+            moment: 'components/moment/moment',
+            codemirror: 'components/codemirror',
+            termjs: 'components/term.js/src/term',
+          },
+          shim: {
+            underscore: {
+              exports: '_'
+            },
+            backbone: {
+              deps: ["underscore", "jquery"],
+              exports: "Backbone"
+            },
+            bootstrap: {
+              deps: ["jquery"],
+              exports: "bootstrap"
+            },
+            bootstraptour: {
+              deps: ["bootstrap"],
+              exports: "Tour"
+            },
+            jqueryui: {
+              deps: ["jquery"],
+              exports: "$"
+            }
+          }
+      });
+
+      require.config({
+          map: {
+              '*':{
+                'contents': 'services/contents',
+              }
+          }
+      });
+    </script>
+
+    
+    
+
+</head>
+
+<body class="edit_app " 
+data-base-url="/user/22207714437/"
+data-file-path="a_pbbias.csv"
+
+>
+
+<noscript>
+    <div id='noscript'>
+      IPython Notebook requires JavaScript.<br>
+      Please enable it to proceed.
+  </div>
+</noscript>
+
+<div id="header">
+
+<!--
+  <div id="header-container" class="container">
+  <div id="ipython_notebook" class="nav navbar-brand pull-left"><a href="/user/22207714437/tree" title='dashboard'><img src='https://joinquant-static2.b0.upaiyun.com/base/images/logo.png?v=7c4597ba713d804995e8f8dad448a397' alt='Jupyter Notebook'/></a></div>
+
+  
+
+
+
+  
+
+<span id="save_widget" class="pull-left save_widget">
+    <span class="filename"></span>
+    <span class="last_modified"></span>
+</span>
+
+
+  </div>
+
+  -->
+  <div class="header-bar"></div>
+
+  
+
+<div id="menubar-container" class="container">
+  <div id="menubar">
+    <div id="menus" class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+          <p  class="navbar-text indicator_area">
+          <span id="current-mode" >current mode</span>
+          </p>
+        <button type="button" class="btn btn-default navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <i class="fa fa-bars"></i>
+          <span class="navbar-text">Menu</span>
+        </button>
+        <ul class="nav navbar-nav navbar-right">
+          <li id="notification_area"></li>
+        </ul>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">文件</a>
+              <ul id="file-menu" class="dropdown-menu">
+                <li id="new-file"><a href="#">新建</a></li>
+                <li id="save-file"><a href="#">保存</a></li>
+                <li id="rename-file"><a href="#">重命名</a></li>
+                <li id="download-file"><a href="#">下载</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">编辑</a>
+              <ul id="edit-menu" class="dropdown-menu">
+                <li id="menu-find"><a href="#">查找</a></li>
+                <li id="menu-replace"><a href="#">查找并替换</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Key Map</li>
+                <li id="menu-keymap-default"><a href="#">Default<i class="fa"></i></a></li>
+                <li id="menu-keymap-sublime"><a href="#">Sublime Text<i class="fa"></i></a></li>
+                <li id="menu-keymap-vim"><a href="#">Vim<i class="fa"></i></a></li>
+                <li id="menu-keymap-emacs"><a href="#">emacs<i class="fa"></i></a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">查看</a>
+              <ul id="view-menu" class="dropdown-menu">
+                <li id="menu-line-numbers"><a href="#">切换行号</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">语言</a>
+              <ul id="mode-menu" class="dropdown-menu">
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="lower-header-bar"></div>
+
+
+</div>
+
+<div id="site">
+
+
+<div id="texteditor-backdrop">
+<div id="texteditor-container" class="container"></div>
+</div>
+
+
+</div>
+
+
+
+
+
+
+    
+
+
+<script src="https://joinquant-static2.b0.upaiyun.com/edit/js/main.min.js?v=87322d2644f477793d7fbda92ed607d7" type="text/javascript" charset="utf-8"></script>
+
+
+</body>
+
+</html>
